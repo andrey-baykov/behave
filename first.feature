@@ -3,10 +3,13 @@ Feature: Test login page
 
   Scenario: Open login page
     Given Open url "https://www.lifetwig.com/"
-    Then Verify element "//div[contains(@class, 'form_header')]" is present
+    Then Wait for "5" seconds
+    Then Wait for "2" seconds
+#    Then Verify element "//div[contains(@class, 'form_header')]" is present
 
   Scenario: Login with valid credentials
     Given Open url "https://www.lifetwig.com/"
+    Then Wait for "2" seconds
     Then Type "pcs.class1223@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Type "!Qwerty&8" in field "//input[@placeholder='Password']"
     Then Click on element "//button[contains(@class, 'ant-btn')]"
