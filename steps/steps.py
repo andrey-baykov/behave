@@ -16,11 +16,26 @@ def open_url(context, url):
     context.driver.get(url)
 
 
-@step('Type "{text}" in field "{element}"')
-def type_in(context, text, element):
-    pass
+@step('Type "{text}" in field "{xpath}"')
+def type_in(context, text, xpath):
+    element = context.driver.find_element(By.XPATH, f"{xpath}")
+    assert element, f"Element with xpath {xpath} is not found"
+    element.send_keys(text)
 
 
 @step('Wait for "{seconds}" seconds')
 def sleep_for(context, seconds):
     sleep(int(seconds))
+
+
+@step('Click on element "{xpath}"')
+def click_element(context, xpath):
+    element = context.driver.find_element(By.XPATH, f"{xpath}")
+    assert element, f"Element with xpath {xpath} is not found"
+    element.click()
+
+
+@step('Verify element "{xpath}" is present')
+def step_impl(context, xpath):
+    element = context.driver.find_element(By.XPATH, f"{xpath}")
+    assert element, f"Element with xpath {xpath} is not found"
