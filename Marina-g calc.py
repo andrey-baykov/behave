@@ -59,12 +59,20 @@ while True:
     if answer == "no":
         print("Thank you for using")
         break
+
     while True:
-        choice = input("Choose: \n1 if km -> miles, \n2 if miles -> km, \n3 if c -> f, \n4 if f -> c:"
+        choice = input("Choose: "
+                       "\n1 if km -> miles, "
+                       "\n2 if miles -> km, "
+                       "\n3 if c -> f, "
+                       "\n4 if f -> c:"
                        " \nEnter you number : ")
-        if choice == "1" or choice == "2" or choice == "3" or choice == "4":
+        # if choice == "1" or choice == "2" or choice == "3" or choice == "4":
+        #     break
+        if choice in ("1", "2", "3", "4"):
             break
         print("Mistake:", choice)
+
     if choice == "1":
         km = float(input("Enter the kilometers: "))
         ml = km / 1.609
@@ -79,5 +87,5 @@ while True:
         print("Fahrenheit", f)
     else:
         f = float(input("Enter the fahrenheit: "))
-        c = (f - 32)* 5/9
+        c = (f - 32) * 5/9
         print("Celsius", c)

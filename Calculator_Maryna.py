@@ -9,17 +9,17 @@
 #
 #
 #
-# user_input = input("Enter temperature in fahrenheit: ")
-# if int(user_input) < 32:
-#     print("Minus temperature")
-# elif int(user_input) == 32:
-#     print("Zero temperature")
-# elif int(user_input) > 33:
-#     print("Plus temperature")
-
-for i in range(0, 33):
-    print(i)
+user_input = input("Enter temperature in fahrenheit: ")
+if int(user_input) < 32:
     print("Minus temperature")
+elif int(user_input) == 32:
+    print("Zero temperature")
+elif int(user_input) > 33:
+    print("Plus temperature")
+
+# for i in range(0, 33):
+#     print(i)
+#     print("Minus temperature")
 
 user_input = ""
 while user_input != "Complete":

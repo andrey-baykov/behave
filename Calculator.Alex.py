@@ -10,7 +10,7 @@
 
 # Home Work - Python (if - else, For It, While True )
 
-#Converter#1 for Miles and Kilometers
+# Converter#1 for Miles and Kilometers
 print("For Convert Kilometers to Miles enter - 1")
 print("For Convert Miles to Kilometers enter - 2")
 choose = input('Please add your choose:  ')
@@ -24,7 +24,7 @@ else:
     print("Invalid Value")
 
 
-#Converter#2 for Miles and Kilometers - with While
+# Converter#2 for Miles and Kilometers - with While
 while True:
     print("Option#1 For Convert Kilometers to Miles enter - 1")
     print("Option#2 For Convert Miles to Kilometers enter - 2")
@@ -43,19 +43,19 @@ while True:
         print("Alert:Invalid Value!")
 
 
-#For i - in range:
-for i in range (0, 7):
+# For i - in range:
+for i in range(0, 7):
     if i == 0:
         print("Home wok is not ready")
     elif i == 1:
         print("1st Task is ready")
     elif i == 2:
         print("2nd - Task is ready")
-    elif i== 3:
+    elif i == 3:
         print("3rd - Task is ready")
-    elif i== 4:
+    elif i == 4:
         print("4th - Task is ready")
     elif i == 5:
-        print ("5th - Task is ready")
+        print("5th - Task is ready")
     else:
         print("Invalid")

@@ -39,3 +39,11 @@ def click_element(context, xpath):
 def step_impl(context, xpath):
     element = context.driver.find_element(By.XPATH, f"{xpath}")
     assert element, f"Element with xpath {xpath} is not found"
+
+
+@step("Temporary")
+def step_impl(context):
+    """
+    :type context: behave.runner.Context
+    """
+    raise NotImplementedError(u'STEP: Then Temporary')
