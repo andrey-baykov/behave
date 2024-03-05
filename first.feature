@@ -35,3 +35,4 @@ Feature: Test login page
     Then Click on element "//a[text()='Go back to the login page']"
     Then Wait for "2" seconds
     Then Verify element "//div[contains(@class, 'form_header')]" is present
+    Then Temporary
