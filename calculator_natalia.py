@@ -4,18 +4,25 @@ while True:
     user_input = input("Type 1 to convert miles to kilometers, \nType 2 to convert kilometers to miles, \nType 3 to "
                        "convert celsius to fahrenheit, \nType 4 to convert fahrenheit to celsius, \nEnter your choice: ")
 
+    def calculate(user_input):
+        print("The result is", result)
+
     if user_input == "1":
         miles = float(input("Enter miles: "))
-        print("The result is ", miles * 1.8, "kilometers")
+        result = miles * 1.8
+        calculate(result)
     elif user_input == "2":
         km = float(input("Enter kilometers: "))
-        print("The result is ", km * 0.621371, "miles")
+        result = km * 0.621371
+        calculate(result)
     elif user_input == "3":
         celsius = float(input("Enter celsius: "))
-        print("The result is ", celsius * 9 / 5 + 32, "fahrenheit")
+        result = celsius * 9 / 5 + 32
+        calculate(result)
     elif user_input == "4":
         fahrenheit = float(input("Enter fahrenheit: "))
-        print("The result is ", (fahrenheit - 32) / 1.8, "celsius")
+        result = (fahrenheit - 32) / 1.8
+        calculate(result)
     else:
         print("You entered wrong number: ", user_input)
 
