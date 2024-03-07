@@ -1,3 +1,6 @@
+# from common import function, summ
+import common
+
 # Calculator_Alex
 # a = int(input("Add first Number: "))
 # b = int(input("Add second Number: "))
@@ -62,23 +65,29 @@ from typing import List
 #         print("Invalid")
 
 
-def function(text):
-    for i in numbers:
-        if i == 0:
-            print("Home wok is not ready")
-        elif i == 1:
-            print("1st - Task is ready")
-        elif i == 2:
-            print("2nd - Task is ready")
-        elif i == 3:
-            print("3rd - Task is ready")
-        elif i == 4:
-            print("4th - Task is ready")
-        elif i == 5:
-            print("5th - Task is ready")
-        else:
-            print("Invalid")
+# def function(text):
+#     for i in text:
+#         if i == 0:
+#             print("Home wok is not ready")
+#         elif i == 1:
+#             print("1st - Task is ready")
+#         elif i == 2:
+#             print("2nd - Task is ready")
+#         elif i == 3:
+#             print("3rd - Task is ready")
+#         elif i == 4:
+#             print("4th - Task is ready")
+#         elif i == 5:
+#             print("5th - Task is ready")
+#         else:
+#             print("Invalid")
 
 
-numbers = [1, 3, 3, 4, 5, 6, 1, 2, 5, 6]
-function(numbers)
+# numbers = [1, 3, 3, 4, 5, 1, 2, 5]
+# res = function(numbers)
+# print(res)
+# res = function([1, 2, 3, 4, 5, 6, 7])
+# print(res)
+# function([0, 1, 2])
+
+print(common.summ(1, 8))
