@@ -1,12 +1,15 @@
+from common import function
+
 print("My converter")
+
+
+def calculate(data):
+    print("The result is", data)
+
 
 while True:
     user_input = input("Type 1 to convert miles to kilometers, \nType 2 to convert kilometers to miles, \nType 3 to "
                        "convert celsius to fahrenheit, \nType 4 to convert fahrenheit to celsius, \nEnter your choice: ")
-
-    def calculate(user_input):
-        print("The result is", result)
-
     if user_input == "1":
         miles = float(input("Enter miles: "))
         result = miles * 1.8
@@ -30,3 +33,6 @@ while True:
         break
 
 print("Thank you for using converter")
+
+numbers = [1, 2, 3, 4, 5, 6, 7]
+function(numbers)
