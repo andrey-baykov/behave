@@ -65,7 +65,7 @@ def step_impl(context):
 
 @step('Toggle element "{xpath}" to "{condition}"')
 def step_impl(context, xpath, condition):
-    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, f"{xpath}")))
+    element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"{xpath}")))
     assert element, f"Element with xpath {xpath} is not found"
     element_condition = element.get_attribute("aria-checked")
     if condition.lower() == "on" and element_condition == 'false':
@@ -73,14 +73,40 @@ def step_impl(context, xpath, condition):
     elif condition.lower() == "off" and element_condition == 'true':
         element.click()
 
+    elements = {
+        'password_change': "//div[./div/p[text()='Password change']]/button",
+        'connection': "//div[./div/p[text()='Connection accepted']]/button",
+        'birthdays': "//div[./div/p[text()='Birthdays']]/button",
+        'likes': "//div[./div/p[text()='Likes, comments & shares']]/button"
+
+    }
+
+    context.driver.get(elements["xpath"])
+
+
 
 @step('Login as "{role}"')
 def login_as(context, role):
     users = {
         'admin': ('pcs.class1223@gmail.com', '!Qwerty&8'),
         'sales': ('sales@gmail.com', '12345'),
+        'user1': ('grishina.ermashkevich@gmail.com', 'Ven12345@')
     }
+
 
     type_in(context, users[role][0], "//input[@placeholder='Email Address']")
     type_in(context, users[role][1], "//input[@placeholder='Password']")
+
     click_element(context, "//button[contains(@class, 'ant-btn')]")
+    click_element(context, "//button[.//p[text()='Settings']]")
+    click_element(context, "//a[text()='Notifications']")
+
+
+
+
+
+
+
+
+
+
