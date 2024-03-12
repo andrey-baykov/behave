@@ -2,32 +2,24 @@ Feature: Home Screen
 #  This is the feature for Home screen
 
   Scenario: Open Home screen page
-    Given Open url "https://www.lifetwig.com/"
-    Then Wait for "5" seconds
-    Then Verify element "//div[contains(@class, 'form_header')]" is present
+    Given Open "prod" url
+    Then Verify element "logo" is present
 
   Scenario: Error message for Log In
-    Given Open url "https://www.lifetwig.com/"
-    Then Wait for "2" seconds
-    Then Click on element "//button[contains(@class, 'ant-btn')]"
-    Then Wait for "2" seconds
-    And Verify element "//div[text()='Please input your email address']" is present
-    Then Wait for "1" seconds
-    And Verify element "//div[text()='Please input your password!']" is present
+    Given Open "prod" url
+    Then Click on element "LogIn" button
+    And Verify element "email_field" is present
+    And Verify element "password_field" is present
 
   Scenario: Login with invalid credentials
-    Given Open url "https://www.lifetwig.com/"
-    Then Wait for "2" seconds
+    Given Open "prod" url
     Then Type "Alex@gmail.com" in field "//input[@placeholder='Email Address']"
-    Then Wait for "2" seconds
     Then Type "SDET" in field "//input[@placeholder='Password']"
-    Then Wait for "2" seconds
-    Then Click on element "//button[contains(@class, 'ant-btn')]"
-    Then Wait for "2" seconds
-    And Verify element "//div[text()='User with such email is not found']" is present
+    Then Click on element "LogIn" button
+    And Verify element "email is not found" is present
 
   Scenario: Login with valid credentials
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "Savuchert@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -42,7 +34,7 @@ Feature: Home Screen
     And Verify element "//div[@class='auth_auth_logo__36DCJ']" is present
 
   Scenario: Login and click and ucheck box Remember Me
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "Savuchert@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "1" seconds
@@ -59,7 +51,7 @@ Feature: Home Screen
     And Verify element "//div[@class='auth_auth_logo__36DCJ']" is present
 
   Scenario: Verify 'Report Sent' message for Tab 'Contact us'
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "Savuchert@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "1" seconds
@@ -82,7 +74,7 @@ Feature: Home Screen
     And Verify element "//span[text()='Report sent']" is present
 
   Scenario: Change Language successfully
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "Savuchert@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "1" seconds

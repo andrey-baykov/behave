@@ -12,13 +12,6 @@ from selenium.webdriver.chrome.options import Options
 
 @step('Open "{env}" url')
 def open_url(context, env):
-    # if env == 'prod':
-    #     url = 'https://www.lifetwig.com/'
-    # elif env == 'uat':
-    #     url = 'https://google.com/'
-    # elif env == 'dev':
-    #     url = 'https://yahoo.com'
-
     urls = {
         'prod': 'https://www.lifetwig.com/',
         'uat': 'https://google.com/',
@@ -41,26 +34,36 @@ def sleep_for(context, seconds):
     sleep(int(seconds))
 
 
-@step('Click on element "{xpath}"')
+@step('Click on element "{xpath}" button')
 def click_element(context, xpath):
-    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, f"{xpath}")))
-    assert element, f"Element with xpath {xpath} is not found"
+    names = {
+        'LogIn': '//button[contains(@class, "ant-btn")]',
+    }
+    btn = names.get(xpath)
+    element = WebDriverWait(context.driver, 15).until(EC.element_to_be_clickable((By.XPATH, f"{btn}")))
+    assert element, f"Element with xpath {btn} is not found"
     element.click()
 
+# For review#1
+# @step('Verify element "{logo}" is present')
+# def step_impl(context, logo):
+#     element = "//div[contains(@class, 'form_header')]"
+#     # element = context.driver.find_element(By.XPATH, f"{xpath}")
+#     element = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located((By.XPATH, f"{element}")))
+#     assert element, f"Element with xpath {element} is not found"
 
 @step('Verify element "{xpath}" is present')
 def step_impl(context, xpath):
+    names = {
+        'logo': '//div[contains(@class, "form_header")]',
+        'email_field': '//div[text()="Please input your email address"]',
+        'password_field': '//div[text()="Please input your password!"]',
+        'email is not found': '//div[text()="User with such email is not found"]'
+    }
+    button = names.get(xpath)
     # element = context.driver.find_element(By.XPATH, f"{xpath}")
-    element = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located((By.XPATH, f"{xpath}")))
-    assert element, f"Element with xpath {xpath} is not found"
-
-
-@step("Temporary")
-def step_impl(context):
-    """
-    :type context: behave.runner.Context
-    """
-    raise NotImplementedError(u'STEP: Then Temporary')
+    element = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located((By.XPATH, f"{button}")))
+    assert element, f"Element with xpath {button} is not found"
 
 
 @step('Toggle element "{xpath}" to "{condition}"')
