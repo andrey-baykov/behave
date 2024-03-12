@@ -65,24 +65,20 @@ def step_impl(context):
 
 @step('Toggle element "{xpath}" to "{condition}"')
 def step_impl(context, xpath, condition):
-    element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"{xpath}")))
+    elements = {
+        'password_change': "//div[./div/p[text()='Password change']]/button",
+        'connection': "//div[./div/p[text()='Connection accepted']]/button",
+        'birthdays': "//div[./div/p[text()='Birthdays']]/button",
+        'likes': "//div[./div/p[text()='Likes, comments & shares']]/button"
+    }
+
+    element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"{elements[xpath]}")))
     assert element, f"Element with xpath {xpath} is not found"
     element_condition = element.get_attribute("aria-checked")
     if condition.lower() == "on" and element_condition == 'false':
         element.click()
     elif condition.lower() == "off" and element_condition == 'true':
         element.click()
-
-    elements = {
-        'password_change': "//div[./div/p[text()='Password change']]/button",
-        'connection': "//div[./div/p[text()='Connection accepted']]/button",
-        'birthdays': "//div[./div/p[text()='Birthdays']]/button",
-        'likes': "//div[./div/p[text()='Likes, comments & shares']]/button"
-
-    }
-
-    context.driver.get(elements["xpath"])
-
 
 
 @step('Login as "{role}"')
@@ -102,11 +98,19 @@ def login_as(context, role):
     click_element(context, "//a[text()='Notifications']")
 
 
+@step("Login with following credentials")
+def step_impl(context):
+    xpaths = {
+        'login': "//input[@placeholder='Email Address']",
+        'password': "//input[@placeholder='Password']"
+    }
+
+    for row in context.table:
+        type_in(context, row['value'], xpaths[row['element']])
+        # type_in(context, "pcs.class1223@gmail.com", "//input[@placeholder='Email Address']")
+        # type_in(context, "!Qwerty&8", "//input[@placeholder='Password']")
 
 
 
-
-
-
-
-
+    # context.table = [{'element': 'login', 'value': 'pcs.class1223@gmail.com'},
+    #                  {'element': 'password','value': '!Qwerty&8 '}]

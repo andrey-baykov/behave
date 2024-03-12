@@ -2,7 +2,7 @@ Feature: Home Screen
 #  This is the feature for Home screen
 
   Scenario: Open Home screen page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "5" seconds
     Then Verify element "//div[contains(@class, 'form_header')]" is present
 
