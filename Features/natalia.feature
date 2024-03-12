@@ -25,7 +25,7 @@ Feature: Test login page
     Then Wait for "2" seconds
     Then Type "Ven12345@" in field "//input[@placeholder='Password']"
     Then Wait for "2" seconds
-    Then Click on element "//input[@class= 'ant-checkbox-input']"
+    Then Click on element "//span[./input[@class= 'ant-checkbox-input']]"
     Then Wait for "2" seconds
     Then Click on element "//Span[text() = 'Sign up']"
     Then Wait for "2" seconds

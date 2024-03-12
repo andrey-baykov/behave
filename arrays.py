@@ -54,11 +54,28 @@
 # person_d["name"] = "Alex"
 # print(person_d["name"])
 
-numbers_l = ["Andrey", 3, "Marina", 5, "Alex", 9, "Natalia"]
-for item in numbers_l:
-    print(item)
+# numbers_l = ["Andrey", 3, "Marina", 5, "Alex", 9, "Natalia"]
+# for item in numbers_l:
+#     print(item)
+#
+# choice = ["1", "2", "3", "4"]
+#
+# if "ello" in "Hello":
+#     print("Yes")
 
-choice = ["1", "2", "3", "4"]
+#
+# a = []
+# print(a)
+# a.append('hello')
+# print(a)
+# a.append('world')
+# print(a)
 
-if "ello" in "Hello":
-    print("Yes")
+d = {}
+print(d)
+d['login'] = 'admin'
+print(d)
+d['password'] = 1233445
+print(d)
+d['login'] = 'sale'
+print(d)
