@@ -2,7 +2,7 @@ Feature: Test login page
 #  These tests are for the login page
 
   Scenario: Reset password
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Click on element "//a[text()='Forgot Password']"
     Then Wait for "2" seconds
@@ -13,7 +13,7 @@ Feature: Test login page
     Then Verify element "//div[text() = 'Enter security code']" is present
 
   Scenario: Sign up flow
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Click on element "//a[text() = 'Sign up']"
     Then Wait for "2" seconds
@@ -25,7 +25,7 @@ Feature: Test login page
     Then Wait for "2" seconds
     Then Type "Ven12345@" in field "//input[@placeholder='Password']"
     Then Wait for "2" seconds
-    Then Click on element "//input[@class= 'ant-checkbox-input']"
+    Then Click on element "//span[./input[@class= 'ant-checkbox-input']]"
     Then Wait for "2" seconds
     Then Click on element "//Span[text() = 'Sign up']"
     Then Wait for "2" seconds
@@ -33,7 +33,7 @@ Feature: Test login page
     Then Wait for "2" seconds
 
   Scenario: Sign in from Sign up screen
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Click on element "//a[text() = 'Sign up']"
     Then Wait for "2" seconds
@@ -48,7 +48,7 @@ Feature: Test login page
     And Verify element "//div[text()='grishina.ermashkevich@gmail.com']" is present
 
   Scenario: Log out from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -63,7 +63,7 @@ Feature: Test login page
     And Verify element "//span[text()='Login']" is present
 
   Scenario: Go to the Photos section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -76,7 +76,7 @@ Feature: Test login page
     And Verify element "//span[text()='Create album']" is present
 
   Scenario: Go to the Videos section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -89,7 +89,7 @@ Feature: Test login page
     And Verify element "//span[text()='Create video album']" is present
 
   Scenario: Go to the Calendar section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -102,7 +102,7 @@ Feature: Test login page
     And Verify element "//button[@class='react-calendar__navigation__arrow react-calendar__navigation__prev2-button']" is present
 
   Scenario: Go to the Personal info section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -115,7 +115,7 @@ Feature: Test login page
     And Verify element "//div[text()='Personal Info']" is present
 
   Scenario: Go to the Messages section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -128,7 +128,7 @@ Feature: Test login page
     And Verify element "//b[text()='SEND MESSAGES']" is present
 
   Scenario: Go to the Settings section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -141,7 +141,7 @@ Feature: Test login page
     And Verify element "//a[text()='Privacy']" is present
 
   Scenario: Go to the Settings section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -154,7 +154,7 @@ Feature: Test login page
     And Verify element "//div[text()='Contact us']" is present
 
   Scenario: Go to Change language section from the main page
-    Given Open url "https://www.lifetwig.com/"
+    Given Open "prod" url
     Then Wait for "2" seconds
     Then Type "grishina.ermashkevich@gmail.com" in field "//input[@placeholder='Email Address']"
     Then Wait for "2" seconds
@@ -164,6 +164,27 @@ Feature: Test login page
     Then Wait for "2" seconds
     Then Click on element "//span[@class='ant-select-selection-item']"
     Then Wait for "2" seconds
+
+  Scenario: Toggle notifications
+    Given Open "prod" url
+    Then Login as "user1"
+    Then Click on element "Settings"
+    Then Click on element "Notifications"
+    Then Click on element "password_change"
+    Then Click on element "connections"
+    Then Click on element "birthdays"
+    Then Click on element "likes"
+    Then Wait for "2" seconds
+
+  Scenario: Select Privacy settings
+    Given Open "prod" url
+    Then Login as "user1"
+    Then Click on element "Settings"
+    Then Click on element "//a[text()='Privacy']"
+    Then Click on element "//input[@id = 'rc_select_1']"
+    Then Click on element "//input[@id = 'rc_select_1'][./span[text() = 'Public']"
+
+
 
 
 
