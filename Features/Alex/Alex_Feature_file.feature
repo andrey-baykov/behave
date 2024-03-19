@@ -66,18 +66,16 @@ Feature: Home Screen
     Then Click on "Notifications" button
     Then Toggle element "Password_change" to "on"
     Then Wait for "1" seconds
-    And Toggle element "Connection_accepted" to "on"
-    Then Wait for "1" seconds
-    And Toggle element "Birthdays" to "on"
-    Then Wait for "1" seconds
-    And  Click on "Logout" button
-    And  Verify element "logo" is present
-
-#  Scenario Outline: Use Table
-#    Then Login with "valid" credentials
-#    Then Click on "LogIn" button
-#
-##    Examples:
-##    |credentials |login               |password      |
-##    |valid       |Savuchert@gmail.com |Savuchert12zm!|
-##    |invalid     |Savuchet@gmail.com  |avuchert12zm  |
+    Then Type "Savuchert12zm!" in field "//input[@placeholder='Password']"
+    Then Wait for "2" seconds
+    Then Click on element "//button[contains(@class, 'ant-btn')]"
+    Then Wait for "2" seconds
+    Then Click on element "//button[@class='left-panel_list_element_link__ycxmi left-panel_list_element_dropdown__18nGj']"
+    Then Wait for "2" seconds
+    Then Click on element "//div[text()='Русский']"
+    Then Wait for "2" seconds
+    And  Verify element "//p[text()='Главная']" is present
+    Then Wait for "2" seconds
+    And  Click on element "//button[@class='left-panel_list_element_link__ycxmi left-panel_logout__3wDO1']"
+    Then Wait for "2" seconds
+    And  Verify element "//div[@class='auth_auth_logo__36DCJ']" is present

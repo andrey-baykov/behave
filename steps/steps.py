@@ -2,6 +2,7 @@ from time import sleep
 
 from behave import step
 from selenium import webdriver
+from selenium.common import TimeoutException
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
@@ -51,7 +52,10 @@ def click_element(context, xpath):
 @step('Verify element "{xpath}" is present')
 def step_impl(context, xpath):
     # element = context.driver.find_element(By.XPATH, f"{xpath}")
-    element = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located((By.XPATH, f"{xpath}")))
+    try:
+        element = WebDriverWait(context.driver, 15).until(EC.presence_of_all_elements_located((By.XPATH, f"{xpath}")))
+    except TimeoutException:
+        element = []
     assert element, f"Element with xpath {xpath} is not found"
 
 
@@ -73,6 +77,7 @@ def step_impl(context, xpath, condition):
     }
 
     element = WebDriverWait(context.driver, 10).until(EC.element_to_be_clickable((By.XPATH, f"{elements[xpath]}")))
+
     assert element, f"Element with xpath {xpath} is not found"
     element_condition = element.get_attribute("aria-checked")
     if condition.lower() == "on" and element_condition == 'false':
@@ -88,7 +93,6 @@ def login_as(context, role):
         'sales': ('sales@gmail.com', '12345'),
         'user1': ('grishina.ermashkevich@gmail.com', 'Ven12345@')
     }
-
 
     type_in(context, users[role][0], "//input[@placeholder='Email Address']")
     type_in(context, users[role][1], "//input[@placeholder='Password']")
@@ -114,3 +118,16 @@ def step_impl(context):
 
     # context.table = [{'element': 'login', 'value': 'pcs.class1223@gmail.com'},
     #                  {'element': 'password','value': '!Qwerty&8 '}]
+
+
+@step("Verify google play is open")
+def verify_google_play(context):
+    current_window = context.driver.current_window_handle
+    context.driver.switch_to.window(context.driver.window_handles[1])
+    element = WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//img[@alt='Google Play']")),
+                                                      message="Google play not found")
+    assert element, "Google play not found"
+    sleep(2)
+    context.driver.close()
+    context.driver.switch_to.window(current_window)
+    # context.driver.switch_to.window(context.driver.window_handles[0])
